@@ -1,4 +1,4 @@
-FROM ikeyasu/opengl:cuda9.0-cudnn7-devel-ubuntu16.04
+FROM ikeyasu/opengl:ubuntu16.04
 
 ENV DEBIAN_FRONTEND oninteractive
 
@@ -19,9 +19,12 @@ RUN apt-get update && apt-get install -y \
     mesa-common-dev \
     mesa-utils \
     lxterminal \
+    xvfb \
+    xorg-dev \
  && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 # Copy script
 COPY baselines/. .
 
-ENV APP "lxterminal -e 'bash -c ./dddqn.sh'"
+ENV APP "tail -f /dev/null"
+# ENV APP "lxterminal -e 'bash -c /opt/dddqn.sh'"
