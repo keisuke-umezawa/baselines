@@ -1,29 +1,27 @@
-FROM chainer/chainer:v6.3.0-python3
+FROM ikeyasu/opengl:cuda9.0-cudnn7-devel-ubuntu16.04
+
+ENV DEBIAN_FRONTEND oninteractive
 
 # Create a working directory
-RUN mkdir /app
-WORKDIR /app
-
-# Install Minecraft needed libraries
-RUN apt-get update
-RUN apt-get install openjdk-8-jdk git -y
+WORKDIR /opt
 
 # Install requirements
 COPY ./requirements.txt .
 RUN pip3 install --upgrade pip
+RUN pip3 install chainer==6.3.0 cupy-cuda90==6.3.0
 RUN pip install -r requirements.txt
 
-# Copy script
-COPY . .
-
-# Install X server
+# Install Minecraft needed libraries
 RUN apt-get update && apt-get install -y \
-    libx11-6 \
-    xvfb \
-    python-opengl \
-    x11-xserver-utils \
+    openjdk-8-jdk \
     libglu1-mesa-dev \
     freeglut3-dev \
     mesa-common-dev \
     mesa-utils \
- && rm -rf /var/lib/apt/lists/*
+    lxterminal \
+ && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+
+# Copy script
+COPY baselines/. .
+
+ENV APP "lxterminal -e 'bash -c ./dddqn.sh'"
