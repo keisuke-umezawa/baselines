@@ -23,8 +23,5 @@ RUN apt-get update && apt-get install -y \
     xorg-dev \
  && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
-# Copy script
-COPY baselines/. .
-
 ENV APP "tail -f /dev/null"
 # ENV APP "lxterminal -e 'bash -c /opt/dddqn.sh'"

@@ -7,14 +7,14 @@ python3 dqn_family.py \
 
 # # Navigate
 # python3 dqn_family.py \
-#   --gpu 0 --env MineRLNavigate-v0 --outdir results/MineRLNavigate-v0/dddqn \
+#   --gpu -1 --env MineRLNavigate-v0 --outdir results/MineRLNavigate-v0/dddqn \
 #   --final-exploration-frames 100000 --final-epsilon 0.02 --arch dueling --replay-capacity 30000 --replay-start-size 1000 \
 #   --target-update-interval 1000 --update-interval 1 --agent DoubleDQN --monitor --lr 0.0005 --gamma 1.0 --batch-accumulator mean \
 #   --always-keys forward sprint attack --exclude-keys back left right sneak place
 
 # # NavigateDense
 # python3 dqn_family.py \
-#   --gpu 0 --env MineRLNavigateDense-v0 --outdir results/MineRLNavigateDense-v0/dddqn \
+#   --gpu -1 --env MineRLNavigateDense-v0 --outdir results/MineRLNavigateDense-v0/dddqn \
 #   --final-exploration-frames 100000 --final-epsilon 0.02 --arch dueling --replay-capacity 30000 --replay-start-size 1000 \
 #   --target-update-interval 1000 --update-interval 1 --agent DoubleDQN --monitor --lr 0.0005 --gamma 1.0 --batch-accumulator mean \
 #   --always-keys forward sprint attack --exclude-keys back left right sneak place
